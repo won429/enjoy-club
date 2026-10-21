@@ -1,5 +1,5 @@
 import { config } from './config.js';
-import { mountAdmin } from './controller.js';
+import { mountAdmin } from './controller.js?v=2';
 
 try {
   const auth = await import('./auth.js');

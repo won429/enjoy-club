@@ -43,7 +43,7 @@ export function mountAdmin({ auth, apiBase, fetcher = fetch, document: doc = doc
       const headers = {};
       if (authorized) {
         const token = await auth.idToken(false);
-        if (!token) throw new Error('관리자 계정으로 로그인해주세요.');
+        if (!token) throw new Error('Google 계정으로 로그인해주세요.');
         headers.Authorization = 'Bearer ' + token;
       }
       if (body) headers['Content-Type'] = 'application/json';
@@ -170,7 +170,7 @@ export function mountAdmin({ auth, apiBase, fetcher = fetch, document: doc = doc
     overviewController?.abort();
     user = next;
     clearAdmin();
-    $('account-name').textContent = user?.email || '관리자 전용';
+    $('account-name').textContent = user?.email || '로그인 필요';
     $('logout').hidden = !user;
     notice('');
     if (user) refresh(true);
