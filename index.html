@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111216">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>엔조이 투자 관리자</title>
+  <link rel="stylesheet" href="./admin.css?v=1">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./" aria-label="엔조이 투자 관리자 홈"><span class="brand-mark">e<span>·</span></span><span>enjoy<span class="brand-sub">investment admin</span></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav aria-label="관리 메뉴">
+      <a class="active" href="#overview"><span aria-hidden="true">▦</span> 운영 현황</a>
+      <a href="#index-settings"><span aria-hidden="true">↗</span> 지수 설정</a>
+      <a href="#change-history"><span aria-hidden="true">◷</span> 변경 기록</a>
+    </nav>
+    <div class="sidebar-bottom"><span class="status-dot"></span> 엔조이 투자 운영<span>한국 시간 · KST</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span>투자 관리 <span class="slash">/</span> 운영 현황</span><div class="session"><span id="account-name">관리자 전용</span><button id="logout" class="text-button" type="button" hidden>로그아웃</button></div></header>
+    <main id="overview">
+      <div class="page-heading"><div><p class="eyebrow">MARKET CONTROL</p><h1>투자 운영 현황</h1><p class="page-description">오늘의 지수를 설정하고 시장 운영 상태를 확인하세요.</p></div><span class="today" id="today"></span></div>
+      <section class="login-panel" id="login-panel" aria-labelledby="login-title">
+        <div class="login-symbol" aria-hidden="true">e·</div><div class="login-copy"><span class="tag">ADMIN ACCESS</span><h2 id="login-title">관리자 계정으로 시작하세요</h2><p>기존 엔조이 Google 관리자 계정으로 로그인하면<br class="desktop-break"> 지수 설정과 변경 기록을 관리할 수 있어요.</p></div><button class="primary-button" id="login" type="button"><span class="google-g" aria-hidden="true">G</span> Google로 로그인 <span aria-hidden="true">↗</span></button>
+      </section>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <section class="summary-grid" aria-label="시장 요약">
+        <article class="summary-card"><div class="card-label"><span>엔조이 지수</span><span class="pill mint">직접 설정</span></div><p class="summary-value" id="index-value">— <span>P</span></p><div class="summary-meta"><span id="index-won">—원</span><span id="index-change">전일 대비 —</span></div></article>
+        <article class="summary-card"><div class="card-label"><span>엔조이스튜디오</span><span class="pill">매시간 자동</span></div><p class="summary-value" id="stock-value">— <span>P</span></p><div class="summary-meta"><span id="stock-won">—원</span><span id="stock-change">직전 대비 —</span></div></article>
+        <article class="summary-card operation-card"><div class="card-label"><span>시장 운영</span><span class="lock-symbol" aria-hidden="true">▣</span></div><p class="operation-value">거래 잠금 <span class="status-dot amber"></span></p><p class="summary-meta">주식 매수·매도가 중지되어 있어요.</p><div class="operating-hours"><span>차트 운영 시간</span><strong>00:00 — 23:00</strong></div></article>
+      </section>
+      <div class="content-grid" id="admin-content" hidden>
+        <section class="panel settings-panel" id="index-settings" aria-labelledby="settings-title">
+          <div class="panel-heading"><div><p class="eyebrow">DAILY INDEX</p><h2 id="settings-title">오늘의 지수 설정</h2></div><span class="pill mint">엔조이</span></div>
+          <p class="panel-description">저장한 값은 다음 설정까지 유지돼요.<br>주식의 자동 변동은 지수에 영향을 주지 않아요.</p>
+          <form id="index-form">
+            <label for="index-price">지수 값 <span>포인트 기준</span></label>
+            <div class="price-input"><input id="index-price" name="price" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required autocomplete="off" aria-describedby="price-help"><span>P</span></div>
+            <div class="input-helper" id="price-help"><span id="price-won">= —원</span><span>100P = 1원</span></div>
+            <div class="change-preview"><span>전일 대비 예상</span><strong id="change-preview">—</strong></div>
+            <label for="index-note" class="note-label">변경 메모 <span>선택</span></label><textarea id="index-note" name="note" rows="2" maxlength="200" placeholder="오늘의 지수 설정 사유를 남겨보세요."></textarea>
+            <div class="save-row"><span id="last-update">마지막 설정 기록 없음</span><button class="primary-button" id="save" type="submit">지수 저장 <span aria-hidden="true">↗</span></button></div>
+            <p class="save-help">저장 즉시 서버에 적용돼요. 엔조이 앱은 다음 시세 조회 시 반영됩니다.</p>
+          </form>
+        </section>
+        <aside class="panel guide-panel" aria-labelledby="guide-title"><div class="panel-heading"><div><p class="eyebrow">OPERATION GUIDE</p><h2 id="guide-title">운영 기준</h2></div><span class="guide-icon" aria-hidden="true">↗</span></div><div class="guide-item"><span class="guide-number">01</span><div><h3>지수는 직접 설정</h3><p>매일 원하는 값으로 설정하세요. 자동으로 오르거나 내리지 않아요.</p></div></div><div class="guide-item"><span class="guide-number">02</span><div><h3>주식은 매시간 갱신</h3><p>엔조이스튜디오는 매시 정각 갱신돼요. 시간당 변동폭은 <strong id="stock-range">±3%</strong>예요.</p></div></div><div class="guide-item"><span class="guide-number">03</span><div><h3>거래는 준비 중</h3><p>현재 구매·판매는 잠겨 있어요. 회원의 보유 포인트는 변경하지 않아요.</p></div></div><div class="sync-line"><span class="status-dot"></span><span id="sync-status">서버 연결 확인 중</span><button class="text-button" id="refresh" type="button">새로고침 ↻</button></div></aside>
+      </div>
+      <section class="panel history-panel" id="change-history" aria-labelledby="history-title" hidden><div class="panel-heading"><div><p class="eyebrow">ACTIVITY LOG</p><h2 id="history-title">지수 변경 기록</h2></div><span class="muted">최근 30건</span></div><div class="table-scroll"><table><thead><tr><th scope="col">변경 일시 · KST</th><th scope="col">변경 전</th><th scope="col">변경 후</th><th scope="col">전일 대비</th><th scope="col">메모</th></tr></thead><tbody id="history-body"></tbody></table></div><p class="empty-history" id="empty-history" hidden>아직 변경 기록이 없어요. 첫 지수를 설정해보세요.</p></section>
+      <footer class="page-footer"><span><strong>enjoy</strong> investment admin</span><span>지수 직접 설정 · 주식 매시간 갱신</span></footer>
+    </main>
+  </div>
+  <script type="module" src="./admin.js?v=1"></script>
+</body>
+</html>
