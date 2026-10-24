@@ -31,12 +31,12 @@
       <section class="summary-grid" aria-label="시장 요약">
         <article class="summary-card"><div class="card-label"><span>엔조이 지수</span><span class="pill mint">직접 설정</span></div><p class="summary-value" id="index-value">— <span>P</span></p><div class="summary-meta"><span id="index-won">—원</span><span id="index-change">전일 대비 —</span></div></article>
         <article class="summary-card"><div class="card-label"><span>엔조이스튜디오</span><span class="pill">30분마다 자동</span></div><p class="summary-value" id="stock-value">— <span>P</span></p><div class="summary-meta"><span id="stock-won">—원</span><span id="stock-change">직전 대비 —</span></div></article>
-        <article class="summary-card operation-card"><div class="card-label"><span>시장 운영</span><span class="lock-symbol" aria-hidden="true">▣</span></div><p class="operation-value">거래 잠금 <span class="status-dot amber"></span></p><p class="summary-meta">주식 매수·매도가 중지되어 있어요.</p><div class="operating-hours"><span>차트 운영 시간</span><strong>00:00 — 23:30</strong></div></article>
+        <article class="summary-card operation-card"><div class="card-label"><span>시장 운영</span><span class="lock-symbol" aria-hidden="true">▣</span></div><p class="operation-value">거래 잠금 <span class="status-dot amber"></span></p><p class="summary-meta">드롭 매수·매도가 중지되어 있어요.</p><div class="operating-hours"><span>차트 운영 시간</span><strong>00:00 — 23:30</strong></div></article>
       </section>
       <div class="content-grid" id="admin-content" hidden>
         <section class="panel settings-panel" id="index-settings" aria-labelledby="settings-title">
           <div class="panel-heading"><div><p class="eyebrow">DAILY INDEX</p><h2 id="settings-title">오늘의 지수 설정</h2></div><span class="pill mint">엔조이</span></div>
-          <p class="panel-description">저장한 값은 다음 설정까지 유지돼요.<br>주식의 자동 변동은 지수에 영향을 주지 않아요.</p>
+          <p class="panel-description">저장한 값은 다음 설정까지 유지돼요.<br>드롭의 자동 변동은 지수에 영향을 주지 않아요.</p>
           <form id="index-form">
             <label for="index-price">지수 값 <span>포인트 기준</span></label>
             <div class="price-input"><input id="index-price" name="price" type="number" min="1" max="1000000000" step="1" inputmode="numeric" required autocomplete="off" aria-describedby="price-help"><span>P</span></div>
@@ -47,10 +47,10 @@
             <p class="save-help">저장 즉시 서버에 적용돼요. 엔조이 앱은 다음 시세 조회 시 반영됩니다.</p>
           </form>
         </section>
-        <aside class="panel guide-panel" aria-labelledby="guide-title"><div class="panel-heading"><div><p class="eyebrow">OPERATION GUIDE</p><h2 id="guide-title">운영 기준</h2></div><span class="guide-icon" aria-hidden="true">↗</span></div><div class="guide-item"><span class="guide-number">01</span><div><h3>지수는 직접 설정</h3><p>매일 원하는 값으로 설정하세요. 자동으로 오르거나 내리지 않아요.</p></div></div><div class="guide-item"><span class="guide-number">02</span><div><h3>주식은 30분마다 갱신</h3><p>엔조이스튜디오는 매시 00분·30분 갱신돼요. 변동당 최대 등락폭은 <strong id="stock-range">±10%</strong>예요.</p></div></div><div class="guide-item"><span class="guide-number">03</span><div><h3>거래는 준비 중</h3><p>현재 구매·판매는 잠겨 있어요. 회원의 보유 포인트는 변경하지 않아요.</p></div></div><div class="sync-line"><span class="status-dot"></span><span id="sync-status">서버 연결 확인 중</span><button class="text-button" id="refresh" type="button">새로고침 ↻</button></div></aside>
+        <aside class="panel guide-panel" aria-labelledby="guide-title"><div class="panel-heading"><div><p class="eyebrow">OPERATION GUIDE</p><h2 id="guide-title">운영 기준</h2></div><span class="guide-icon" aria-hidden="true">↗</span></div><div class="guide-item"><span class="guide-number">01</span><div><h3>지수는 직접 설정</h3><p>매일 원하는 값으로 설정하세요. 자동으로 오르거나 내리지 않아요.</p></div></div><div class="guide-item"><span class="guide-number">02</span><div><h3>드롭은 30분마다 갱신</h3><p>엔조이스튜디오는 매시 00분·30분 갱신돼요. 변동당 최대 등락폭은 <strong id="stock-range">±10%</strong>예요.</p></div></div><div class="guide-item"><span class="guide-number">03</span><div><h3>거래는 준비 중</h3><p>현재 구매·판매는 잠겨 있어요. 회원의 보유 포인트는 변경하지 않아요.</p></div></div><div class="sync-line"><span class="status-dot"></span><span id="sync-status">서버 연결 확인 중</span><button class="text-button" id="refresh" type="button">새로고침 ↻</button></div></aside>
       </div>
       <section class="panel history-panel" id="change-history" aria-labelledby="history-title" hidden><div class="panel-heading"><div><p class="eyebrow">ACTIVITY LOG</p><h2 id="history-title">지수 변경 기록</h2></div><span class="muted">최근 30건</span></div><div class="table-scroll"><table><thead><tr><th scope="col">변경 일시 · KST</th><th scope="col">변경 전</th><th scope="col">변경 후</th><th scope="col">전일 대비</th><th scope="col">메모</th></tr></thead><tbody id="history-body"></tbody></table></div><p class="empty-history" id="empty-history" hidden>아직 변경 기록이 없어요. 첫 지수를 설정해보세요.</p></section>
-      <footer class="page-footer"><span><strong>enjoy</strong> investment admin</span><span>지수 직접 설정 · 주식 30분마다 갱신</span></footer>
+      <footer class="page-footer"><span><strong>enjoy</strong> investment admin</span><span>지수 직접 설정 · 드롭 30분마다 갱신</span></footer>
     </main>
   </div>
   <script type="module" src="./admin.js?v=2"></script>
