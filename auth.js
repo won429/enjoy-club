@@ -1,9 +1,9 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, setPersistence, browserSessionPersistence } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, setPersistence, browserLocalPersistence } from 'https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js';
 import { config } from './config.js';
 
 const auth = getAuth(initializeApp(config.firebase, 'investment-admin'));
-await setPersistence(auth, browserSessionPersistence);
+await setPersistence(auth, browserLocalPersistence);
 export const observeAuth = callback => onAuthStateChanged(auth, callback);
 export const login = () => {
   const provider = new GoogleAuthProvider();
