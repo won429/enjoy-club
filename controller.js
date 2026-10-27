@@ -1,3 +1,5 @@
+import { mountGrants } from './grants.js?v=20261027-grants1';
+
 const number = value => Number(value).toLocaleString('ko-KR');
 const won = value => number(value / 100) + '원';
 const dateTime = (value, dateOnly = false) => new Intl.DateTimeFormat('ko-KR', {
@@ -14,6 +16,7 @@ const trend = (element, value) => { element.classList.toggle('up', value > 0); e
 
 export function mountAdmin({ auth, apiBase, fetcher = fetch, document: doc = document }) {
   const $ = id => doc.getElementById(id);
+  const grants = mountGrants({ auth, apiBase, fetcher, document: doc });
   let user = null, snapshot = null, busy = false, generation = 0, pendingWrite = null, overviewController = null;
   $('today').textContent = dateTime(Date.now(), true);
   function notice(text, error = false) {
@@ -169,6 +172,7 @@ export function mountAdmin({ auth, apiBase, fetcher = fetch, document: doc = doc
     generation++;
     overviewController?.abort();
     user = next;
+    grants.setUser(next);
     clearAdmin();
     $('account-name').textContent = user?.email || '로그인 필요';
     $('logout').hidden = !user;
